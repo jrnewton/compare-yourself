@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "version" : "2020-12-30T18:11:28Z",
+    "version" : "2020-12-30T18:55:04Z",
     "title" : "compare-yourself"
   },
   "host" : "8dqz0v87p3.execute-api.us-east-2.amazonaws.com",
@@ -33,6 +33,9 @@
             }
           }
         },
+        "security" : [ {
+          "compare-yourself-custom-authorizer" : [ ]
+        } ],
         "x-amazon-apigateway-integration" : {
           "type" : "aws",
           "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-store-data/invocations",
@@ -211,6 +214,19 @@
           },
           "passthroughBehavior" : "when_no_match"
         }
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "compare-yourself-custom-authorizer" : {
+      "type" : "apiKey",
+      "name" : "Authorization",
+      "in" : "header",
+      "x-amazon-apigateway-authtype" : "custom",
+      "x-amazon-apigateway-authorizer" : {
+        "type" : "token",
+        "authorizerUri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-custom-authorizer/invocations",
+        "authorizerResultTtlInSeconds" : 300
       }
     }
   },

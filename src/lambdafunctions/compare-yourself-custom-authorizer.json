@@ -1,0 +1,23 @@
+{
+  "Configuration": {
+    "FunctionName": "compare-yourself-custom-authorizer",
+    "FunctionArn": "arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-custom-authorizer",
+    "Runtime": "nodejs12.x",
+    "Role": "arn:aws:iam::336249122316:role/service-role/compare-yourself-custom-authorizer-role-u9jtdms3",
+    "Handler": "index.handler",
+    "CodeSize": 493,
+    "Description": "",
+    "Timeout": 3,
+    "MemorySize": 128,
+    "LastModified": "2020-12-30T18:51:42.985+0000",
+    "CodeSha256": "5j6hcaqKMiSpoXb+Fj13uHu4kw4ZPf8/5YkxJDZxAO0=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+      "Mode": "PassThrough"
+    },
+    "RevisionId": "be78ee0d-4fff-4226-9803-685a5fcf2be1",
+    "State": "Active",
+    "LastUpdateStatus": "Successful",
+    "PackageType": "Zip"
+  }
+}
