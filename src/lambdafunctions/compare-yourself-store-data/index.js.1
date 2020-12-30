@@ -1,0 +1,74 @@
+const AWS = require('aws-sdk');
+
+//define outside of handler function 
+//to give a chance for caching the code between lambda invocations
+const dynamodb = new AWS.DynamoDB({
+  apiVersion: '2012-08-10',
+  region: 'us-east-2'
+});
+
+exports.handler = async(event, context) => {
+  // const response = {
+  //     statusCode: 200,
+  //     body: JSON.stringify('Hi I\'m Lambda'),
+  // };
+  // return response;
+
+  // return {
+  //     message: "hi from lambda"
+  // }
+
+  //doesn't work with lambda proxy 
+  //return event;
+
+  //when using lambda proxy: 
+  // console.log('event is', event);
+  // return { 
+  //     headers: {
+  //         'Control-Access-Allow-Origin': '*'      
+  //     }, 
+  //     body: {
+  //      event: event   
+  //     }
+  // };
+
+//NOTE: pass all _values_ as strings
+  const params = {
+    Item: {
+      'Userid': {
+        S: 'aksdjfj9djfkdjfk'
+      },
+      'Age': {
+        N: '43'
+      },
+      'Height': {
+        N: '65'
+      },
+      'Income': {
+        N: '2500'
+      }
+    },
+    TableName: 'compare-yourself'
+  };
+  
+  const promise = new Promise((resolve, reject) => {
+    dynamodb.putItem(params, (err, data) => { 
+      if (err) {
+        reject(err);
+      }
+      else {
+        resolve(data);
+      }
+    });
+  });
+  
+  try { 
+    const data = await promise;
+    console.log('data', data);
+    return data;
+  }
+  catch (err) {
+    console.log('err', err);
+    return err;
+  }
+};

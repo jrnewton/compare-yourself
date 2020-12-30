@@ -1,0 +1,27 @@
+{
+    "Configuration": {
+        "FunctionName": "compare-yourself-get-data",
+        "FunctionArn": "arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-get-data",
+        "Runtime": "nodejs12.x",
+        "Role": "arn:aws:iam::336249122316:role/service-role/compare-yourself-get-data-role-3ac55evo",
+        "Handler": "index.handler",
+        "CodeSize": 860,
+        "Description": "",
+        "Timeout": 3,
+        "MemorySize": 128,
+        "LastModified": "2020-12-30T03:02:39.268+0000",
+        "CodeSha256": "aWfg+cHWF1YC3PtW4sIMr9a6oxlq6Ykx4jDfPyavKrs=",
+        "Version": "$LATEST",
+        "TracingConfig": {
+            "Mode": "PassThrough"
+        },
+        "RevisionId": "6950c650-35ed-4240-8a20-c3489b9640d6",
+        "State": "Active",
+        "LastUpdateStatus": "Successful",
+        "PackageType": "Zip"
+    },
+    "Code": {
+        "RepositoryType": "S3",
+        "Location": "https://awslambda-us-east-2-tasks.s3.us-east-2.amazonaws.com/snapshots/336249122316/compare-yourself-get-data-0678a08e-8fbe-407c-a5ce-c432ad788ae3?versionId=ffKi379SDxC_okXavaHaq66yGz3w2tFN&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMiJGMEQCIFVGk3S90Cwm6OXsDU0z8HXHR1eJeZXluOLAcqdP6qisAiArFWoZfNSlI%2FB9FwyHFkzriBCMkXOTsOuI9lFO6bUm5iq0Awh3EAIaDDEwNDI0NjAxNzg2NSIMv95VBBeK9DzZy%2BJMKpEDdcfFPeCUwJS1q7%2Fb2visJzfjSPNhgsKP3cPGDU6Zl6dUnSNQUgxDsfX85Z45dlotxPhfWdUd%2Fowj%2Br71OBGDPcD4T03M30ZJc96ToNDTzdUGuHQgW1N0ergGg7o78N6%2Ba4ptNNZWINMPSQvqwQ6Hi8XlcuMkYhKclujm3fWwl973MCc24vMExGTENdLXiYBvKAC%2BhygDyXVPYyDxzyzPgljmRkoL0lMab%2FNj7bxHxFFCoGgmu6BKP63qCZ4ivRK8HgNGuFHtV14oSzJhE2Wu3q%2Bv7PSejE900Nt4Xyu5jWyObCn0Ug9bPmoTWNBs15byofL3716WwvKVhBUpNhtpNqDAMTE9VLsAyxv89MLcRh5IFoQGLCgwLO2KZJLxhpJGUt2xqvendf5RtPjouL33w5XlJI%2Bg4CeEnlR%2FeVmA%2FCEgQlZ9Lgw8ssFI12ACFSFcMIsqhbE%2Fpz3pg4VrGaDSaj%2FufY5iK3uXoBPVnETFMvZRZC3Dsg51lhUlUrF%2BW9RAa3ROa27vEQQpnGgVPSHqnYAw65ey%2FwU67AGN%2F3LV0AUIBpx4pwgYpNkjMsOxfbUQ3QEXawvNmOIj3Flfro%2ByZbCXaueKU9SnDqrsm2NSSRlOipQNhyaoOUH7tPPB3q4qBwgmXob0U655GueHHF15gFghasn8ysJelTa%2B1nfzb6GvCIadUmWOFN94o40oDW%2FuQUEO89NK7Akg1R5nlVHwbWvaVgDL0%2B5%2BmqUhkYFviIyBjJLhBjw4D5b8XZD52TX2vQNhQqSV9sFopFyg7g5v46dGo%2FpZVVTtINccuWYZWk79%2FLTQ6aUhNmduzapuPYY81YWEkqXzr7Dx4qR%2BBSxG1Duv%2F8qXRA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20201230T154431Z&X-Amz-SignedHeaders=host&X-Amz-Expires=600&X-Amz-Credential=ASIARQRML75EWC3V7DHH%2F20201230%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Signature=b9bc521846914c3b4a371c27306764fb1ef37956a986b16179e179ef54d110f7"
+    }
+}

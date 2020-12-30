@@ -1,0 +1,61 @@
+{
+    "Functions": [
+        {
+            "FunctionName": "compare-yourself-get-data",
+            "FunctionArn": "arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-get-data",
+            "Runtime": "nodejs12.x",
+            "Role": "arn:aws:iam::336249122316:role/service-role/compare-yourself-get-data-role-3ac55evo",
+            "Handler": "index.handler",
+            "CodeSize": 860,
+            "Description": "",
+            "Timeout": 3,
+            "MemorySize": 128,
+            "LastModified": "2020-12-30T03:02:39.268+0000",
+            "CodeSha256": "aWfg+cHWF1YC3PtW4sIMr9a6oxlq6Ykx4jDfPyavKrs=",
+            "Version": "$LATEST",
+            "TracingConfig": {
+                "Mode": "PassThrough"
+            },
+            "RevisionId": "6950c650-35ed-4240-8a20-c3489b9640d6",
+            "PackageType": "Zip"
+        },
+        {
+            "FunctionName": "compare-yourself-delete-data",
+            "FunctionArn": "arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-delete-data",
+            "Runtime": "nodejs12.x",
+            "Role": "arn:aws:iam::336249122316:role/service-role/compare-yourself-delete-data-role-atq8uo0x",
+            "Handler": "index.handler",
+            "CodeSize": 253,
+            "Description": "",
+            "Timeout": 3,
+            "MemorySize": 128,
+            "LastModified": "2020-12-29T19:10:07.807+0000",
+            "CodeSha256": "pOiHFtak/hEMhYvbxPF5hwrNIgvXpEzVBoH+FfhjzD0=",
+            "Version": "$LATEST",
+            "TracingConfig": {
+                "Mode": "PassThrough"
+            },
+            "RevisionId": "a130503c-82aa-4fd4-876f-5b548fb8fdb3",
+            "PackageType": "Zip"
+        },
+        {
+            "FunctionName": "compare-yourself-store-data",
+            "FunctionArn": "arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-store-data",
+            "Runtime": "nodejs12.x",
+            "Role": "arn:aws:iam::336249122316:role/service-role/compare-yourself-store-data-role-rkaax0jk",
+            "Handler": "index.handler",
+            "CodeSize": 1470,
+            "Description": "",
+            "Timeout": 3,
+            "MemorySize": 128,
+            "LastModified": "2020-12-30T02:10:22.648+0000",
+            "CodeSha256": "jcwwyUFlBW2Mj+JSbGH2Tyh/f8E52BMv0bLPvAb8NOM=",
+            "Version": "$LATEST",
+            "TracingConfig": {
+                "Mode": "PassThrough"
+            },
+            "RevisionId": "8c27f26e-0009-42be-8426-e0d70c524792",
+            "PackageType": "Zip"
+        }
+    ]
+}

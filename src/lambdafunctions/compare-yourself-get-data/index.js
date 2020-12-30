@@ -1,17 +1,17 @@
 const AWS = require('aws-sdk');
 
-//define outside of handler function
+//define outside of handler function 
 //to give a chance for caching the code between lambda invocations
 const dynamodb = new AWS.DynamoDB({
   apiVersion: '2012-08-10',
   region: 'us-east-2'
 });
 
-const getAll = async (event) => {
+const getAll = async(event) => {
   const params = {
     TableName: 'compare-yourself'
-  };
-
+  }
+  
   try {
     console.log('creating promise');
     const promise = new Promise((resolve, reject) => {
@@ -20,45 +20,47 @@ const getAll = async (event) => {
         console.log('scan done');
         if (err) {
           console.log('scan returned error', err);
-          reject(err);
-        } else {
+          reject(err)
+        }
+        else {
           console.log('scan returned data', JSON.stringify(data));
           resolve(data);
         }
       });
     });
-
+  
     const result = await promise;
-    const items = result.Items.map((item) => {
-      return {
-        //"userid": item.Userid.S,
-        height: +item.Height.N,
-        income: +item.Income.N,
-        age: +item.Age.N
+    const items = result.Items.map((item) => { 
+      return { 
+        //"userid": item.Userid.S, 
+        "height": +item.Height.N, 
+        "income": +item.Income.N, 
+        "age": +item.Age.N 
       };
     });
-
+  
     return {
       data: items
-    };
-  } catch (err) {
+    }
+  }
+  catch (err) { 
     console.log('caught error', err);
     return {
       error: err
-    };
+    }
   }
 };
 
-const getSingle = async (event) => {
+const getSingle = async(event) => {
   const params = {
     TableName: 'compare-yourself',
     Key: {
-      Userid: {
+      'Userid': {
         S: 'user_0.8364740765549836'
       }
     }
-  };
-
+  }
+  
   try {
     console.log('creating promise');
     const promise = new Promise((resolve, reject) => {
@@ -67,38 +69,42 @@ const getSingle = async (event) => {
         console.log('get done');
         if (err) {
           console.log('get returned error', err);
-          reject(err);
-        } else {
+          reject(err)
+        }
+        else {
           console.log('get returned data', JSON.stringify(data));
           resolve(data);
         }
       });
     });
-
+  
     const result = await promise;
     //return result;
     return {
-      //"userid": result.Item.Userid.S,
-      height: +result.Item.Height.N,
-      income: +result.Item.Income.N,
-      age: +result.Item.Age.N
+      //"userid": result.Item.Userid.S, 
+      "height": +result.Item.Height.N, 
+      "income": +result.Item.Income.N, 
+      "age": +result.Item.Age.N 
     };
-  } catch (err) {
+  }
+  catch (err) { 
     console.log('caught error', err);
     return {
       error: err
-    };
+    }
   }
 };
 
 exports.handler = async (event) => {
-  const type = event.type;
-  console.log('type', type);
-  if (type === 'all') {
-    return getAll(event);
-  } else if (type === 'single') {
-    return getSingle(event);
-  } else {
-    return 'Unknown type ' + type;
-  }
+    const type = event.type;
+    console.log('type', type);
+    if (type === 'all') {
+      return getAll(event);
+    }
+    else if (type === 'single') {
+      return getSingle(event);
+    }
+    else { 
+      return 'Unknown type ' + type;
+    }
 };
