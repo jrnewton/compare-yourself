@@ -9,7 +9,8 @@ aws lambda list-functions > manifest.json
 for f in $(aws lambda list-functions --query 'Functions[*].FunctionName' | sed '1d;$d' | cut -d, -f1 | xargs);
 do
   echo "Processing $f"
-  aws lambda get-function --function-name $f > $f.json
+  # filter out the code section because the Location property changes each time (noisey).
+  aws lambda get-function --function-name $f  | jq 'with_entries( select(.key|contains("Code")|not))' > $f.json
   aws lambda get-function --function-name $f --query 'Code.Location' | xargs wget -O /tmp/out.zip
   unzip -o /tmp/out.zip -d ./$f/
 done
