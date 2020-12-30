@@ -11,5 +11,5 @@ do
   echo "Processing $f"
   aws lambda get-function --function-name $f > $f.json
   aws lambda get-function --function-name $f --query 'Code.Location' | xargs wget -O /tmp/out.zip
-  unzip /tmp/out.zip -d ./$f/
+  unzip -o /tmp/out.zip -d ./$f/
 done
