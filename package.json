@@ -1,0 +1,19 @@
+{
+  "name": "compare-yourself",
+  "version": "1.0.0",
+  "description": "Coding along to [AWS Serverless APIs &amp; Apps - A Complete Introduction](https://www.udemy.com/course/aws-serverless-a-complete-introduction/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrnewton/compare-yourself.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jrnewton/compare-yourself/issues"
+  },
+  "homepage": "https://github.com/jrnewton/compare-yourself#readme"
+}
