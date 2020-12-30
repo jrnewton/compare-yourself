@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# You must deploy to 'dev' stage before running this script! 
+
 # using text value for parameters did not allow multiple values for extensions.  Use json instead.
 aws apigateway get-export --rest-api-id 8dqz0v87p3 --stage-name dev --export-type swagger --parameters '{"extensions":"integrations,authorizers"}' compare_yourself_swagger.json
 
