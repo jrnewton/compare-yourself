@@ -1,22 +1,41 @@
 {
     "Functions": [
         {
+            "FunctionName": "compare-yourself-custom-authorizer",
+            "FunctionArn": "arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-custom-authorizer",
+            "Runtime": "nodejs12.x",
+            "Role": "arn:aws:iam::336249122316:role/service-role/compare-yourself-custom-authorizer-role-u9jtdms3",
+            "Handler": "index.handler",
+            "CodeSize": 505,
+            "Description": "",
+            "Timeout": 3,
+            "MemorySize": 128,
+            "LastModified": "2020-12-30T19:20:14.231+0000",
+            "CodeSha256": "Nq0gQXXJ7VlV8Ecdyf6HcKeedxSBlPsd93FBQbDPV3Q=",
+            "Version": "$LATEST",
+            "TracingConfig": {
+                "Mode": "PassThrough"
+            },
+            "RevisionId": "421a3083-1870-4786-919a-ddd093e24685",
+            "PackageType": "Zip"
+        },
+        {
             "FunctionName": "compare-yourself-get-data",
             "FunctionArn": "arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-get-data",
             "Runtime": "nodejs12.x",
             "Role": "arn:aws:iam::336249122316:role/service-role/compare-yourself-get-data-role-3ac55evo",
             "Handler": "index.handler",
-            "CodeSize": 860,
+            "CodeSize": 864,
             "Description": "",
             "Timeout": 3,
             "MemorySize": 128,
-            "LastModified": "2020-12-30T03:02:39.268+0000",
-            "CodeSha256": "aWfg+cHWF1YC3PtW4sIMr9a6oxlq6Ykx4jDfPyavKrs=",
+            "LastModified": "2020-12-30T18:07:59.205+0000",
+            "CodeSha256": "qJrfX2Y20eQF/DTjZFS/bbvFPAhNQWSfin8dr5C4Ac0=",
             "Version": "$LATEST",
             "TracingConfig": {
                 "Mode": "PassThrough"
             },
-            "RevisionId": "6950c650-35ed-4240-8a20-c3489b9640d6",
+            "RevisionId": "f12d8ad0-ea51-4bbf-8ce5-f1f5daaaeea2",
             "PackageType": "Zip"
         },
         {
@@ -25,17 +44,17 @@
             "Runtime": "nodejs12.x",
             "Role": "arn:aws:iam::336249122316:role/service-role/compare-yourself-delete-data-role-atq8uo0x",
             "Handler": "index.handler",
-            "CodeSize": 615,
+            "CodeSize": 612,
             "Description": "",
             "Timeout": 3,
             "MemorySize": 128,
-            "LastModified": "2020-12-30T17:00:47.438+0000",
-            "CodeSha256": "5lCAOmaVDiuEAtJPOUu2MFVeI+ABZxPif663J4fVRC4=",
+            "LastModified": "2020-12-30T17:36:28.290+0000",
+            "CodeSha256": "0kwVY7Cff7wzogPWSZT5mpKXL+4BdU2rbxZ3Xj/qy+g=",
             "Version": "$LATEST",
             "TracingConfig": {
                 "Mode": "PassThrough"
             },
-            "RevisionId": "62f61e9a-17ae-46d8-b256-5fd94673a9e1",
+            "RevisionId": "79ced6ac-0232-4738-b72c-2b6294aa06fc",
             "PackageType": "Zip"
         },
         {
@@ -44,17 +63,17 @@
             "Runtime": "nodejs12.x",
             "Role": "arn:aws:iam::336249122316:role/service-role/compare-yourself-store-data-role-rkaax0jk",
             "Handler": "index.handler",
-            "CodeSize": 1470,
+            "CodeSize": 1476,
             "Description": "",
             "Timeout": 3,
             "MemorySize": 128,
-            "LastModified": "2020-12-30T02:10:22.648+0000",
-            "CodeSha256": "jcwwyUFlBW2Mj+JSbGH2Tyh/f8E52BMv0bLPvAb8NOM=",
+            "LastModified": "2020-12-30T19:19:54.030+0000",
+            "CodeSha256": "/UU1jAnYJ4rJb2lzIRVcBLtwzH5AOZK5+icdjVcKHDE=",
             "Version": "$LATEST",
             "TracingConfig": {
                 "Mode": "PassThrough"
             },
-            "RevisionId": "8c27f26e-0009-42be-8426-e0d70c524792",
+            "RevisionId": "b66465d0-f4d6-4212-8af6-ef88b5562bae",
             "PackageType": "Zip"
         }
     ]

@@ -5,17 +5,17 @@
     "Runtime": "nodejs12.x",
     "Role": "arn:aws:iam::336249122316:role/service-role/compare-yourself-delete-data-role-atq8uo0x",
     "Handler": "index.handler",
-    "CodeSize": 615,
+    "CodeSize": 612,
     "Description": "",
     "Timeout": 3,
     "MemorySize": 128,
-    "LastModified": "2020-12-30T17:00:47.438+0000",
-    "CodeSha256": "5lCAOmaVDiuEAtJPOUu2MFVeI+ABZxPif663J4fVRC4=",
+    "LastModified": "2020-12-30T17:36:28.290+0000",
+    "CodeSha256": "0kwVY7Cff7wzogPWSZT5mpKXL+4BdU2rbxZ3Xj/qy+g=",
     "Version": "$LATEST",
     "TracingConfig": {
       "Mode": "PassThrough"
     },
-    "RevisionId": "62f61e9a-17ae-46d8-b256-5fd94673a9e1",
+    "RevisionId": "79ced6ac-0232-4738-b72c-2b6294aa06fc",
     "State": "Active",
     "LastUpdateStatus": "Successful",
     "PackageType": "Zip"

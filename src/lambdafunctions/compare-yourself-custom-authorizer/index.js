@@ -2,7 +2,7 @@ exports.handler = async (event) => {
   const token = event.authorizationToken;
   if (token === 'allow' || token === 'deny') {
     const policy = genPolicy(token, event.methodArn);  
-    const principalId = 'salkfjd';
+    const principalId = 'id_' + Math.random();
     const context = { 
       simpleAuth: true
     }
@@ -11,7 +11,7 @@ exports.handler = async (event) => {
       policyDocument: policy,
       context: context
     }
-    console.log(response, response);
+    console.log('auth response', response);
     return response;
   }
   else {

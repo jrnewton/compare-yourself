@@ -12,7 +12,7 @@ exports.handler = async (event) => {
     TableName: 'compare-yourself',
     Key: {
       'Userid': {
-        S: 'user_0.0025010169283241623'
+        S: 'user_0.2914122110187596'
       }
     }
   }

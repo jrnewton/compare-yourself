@@ -8,11 +8,12 @@ const dynamodb = new AWS.DynamoDB({
 });
 
 exports.handler = async(event, context) => {
+  
 //NOTE: pass all _values_ as strings
   const params = {
     Item: {
       'Userid': {
-        S: 'user_' + Math.random()
+        S: event.userid
       },
       'Age': {
         N: event.age
@@ -26,6 +27,8 @@ exports.handler = async(event, context) => {
     },
     TableName: 'compare-yourself'
   };
+  
+  console.log('params for store-data', params);
   
   const promise = new Promise((resolve, reject) => {
     console.log('create promise');

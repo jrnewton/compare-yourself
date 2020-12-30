@@ -5,17 +5,17 @@
     "Runtime": "nodejs12.x",
     "Role": "arn:aws:iam::336249122316:role/service-role/compare-yourself-store-data-role-rkaax0jk",
     "Handler": "index.handler",
-    "CodeSize": 1470,
+    "CodeSize": 1476,
     "Description": "",
     "Timeout": 3,
     "MemorySize": 128,
-    "LastModified": "2020-12-30T02:10:22.648+0000",
-    "CodeSha256": "jcwwyUFlBW2Mj+JSbGH2Tyh/f8E52BMv0bLPvAb8NOM=",
+    "LastModified": "2020-12-30T19:19:54.030+0000",
+    "CodeSha256": "/UU1jAnYJ4rJb2lzIRVcBLtwzH5AOZK5+icdjVcKHDE=",
     "Version": "$LATEST",
     "TracingConfig": {
       "Mode": "PassThrough"
     },
-    "RevisionId": "8c27f26e-0009-42be-8426-e0d70c524792",
+    "RevisionId": "b66465d0-f4d6-4212-8af6-ef88b5562bae",
     "State": "Active",
     "LastUpdateStatus": "Successful",
     "PackageType": "Zip"

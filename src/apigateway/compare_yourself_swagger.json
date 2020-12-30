@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "version" : "2020-12-30T18:55:04Z",
+    "version" : "2020-12-30T19:21:51Z",
     "title" : "compare-yourself"
   },
   "host" : "8dqz0v87p3.execute-api.us-east-2.amazonaws.com",
@@ -51,7 +51,7 @@
             }
           },
           "requestTemplates" : {
-            "application/json" : "#set($inputRoot = $input.path('$'))\n{\n  ## all properties must be strings for dynamo \n  ## not sure I like doing the conversion here and \n  ## would probably do it in JS code because it's specific to \n  ## lambda/dynamo. \n  \"age\" : \"$inputRoot.age\",\n  \"height\": \"$inputRoot.height\",\n  \"income\": \"$inputRoot.income\"\n}"
+            "application/json" : "#set($inputRoot = $input.path('$'))\n{\n  ## all properties must be strings for dynamo \n  ## not sure I like doing the conversion here and \n  ## would probably do it in JS code because it's specific to \n  ## lambda/dynamo. \n  \"userid\": \"$context.authorizer.principalId\",\n  \"age\" : \"$inputRoot.age\",\n  \"height\": \"$inputRoot.height\",\n  \"income\": \"$inputRoot.income\"\n}"
           },
           "passthroughBehavior" : "when_no_templates",
           "httpMethod" : "POST",
