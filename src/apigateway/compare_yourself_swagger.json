@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "version" : "2020-12-30T02:10:33Z",
+    "version" : "2020-12-30T18:11:28Z",
     "title" : "compare-yourself"
   },
   "host" : "8dqz0v87p3.execute-api.us-east-2.amazonaws.com",
@@ -34,6 +34,7 @@
           }
         },
         "x-amazon-apigateway-integration" : {
+          "type" : "aws",
           "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-store-data/invocations",
           "responses" : {
             "default" : {
@@ -51,8 +52,7 @@
           },
           "passthroughBehavior" : "when_no_templates",
           "httpMethod" : "POST",
-          "contentHandling" : "CONVERT_TO_TEXT",
-          "type" : "aws"
+          "contentHandling" : "CONVERT_TO_TEXT"
         }
       },
       "delete" : {
@@ -71,6 +71,7 @@
           }
         },
         "x-amazon-apigateway-integration" : {
+          "type" : "aws",
           "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-delete-data/invocations",
           "responses" : {
             "default" : {
@@ -82,8 +83,7 @@
           },
           "passthroughBehavior" : "when_no_match",
           "httpMethod" : "POST",
-          "contentHandling" : "CONVERT_TO_TEXT",
-          "type" : "aws"
+          "contentHandling" : "CONVERT_TO_TEXT"
         }
       },
       "options" : {
@@ -109,6 +109,7 @@
           }
         },
         "x-amazon-apigateway-integration" : {
+          "type" : "mock",
           "responses" : {
             "default" : {
               "statusCode" : "200",
@@ -122,8 +123,7 @@
           "requestTemplates" : {
             "application/json" : "{\"statusCode\": 200}"
           },
-          "passthroughBehavior" : "when_no_match",
-          "type" : "mock"
+          "passthroughBehavior" : "when_no_match"
         }
       }
     },
@@ -151,12 +151,16 @@
           }
         },
         "x-amazon-apigateway-integration" : {
+          "type" : "aws",
           "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-get-data/invocations",
           "responses" : {
             "default" : {
               "statusCode" : "200",
               "responseParameters" : {
                 "method.response.header.Access-Control-Allow-Origin" : "'*'"
+              },
+              "responseTemplates" : {
+                "application/json" : "#set($inputRoot = $input.path('$'))\n[\n#foreach($elem in $inputRoot)\n {\n  \"age\" : $elem.age,\n  \"height\" : $elem.height,\n  \"income\" : $elem.income\n} \n#if($foreach.hasNext),#end\n#end\n]"
               }
             }
           },
@@ -165,8 +169,7 @@
           },
           "passthroughBehavior" : "when_no_templates",
           "httpMethod" : "POST",
-          "contentHandling" : "CONVERT_TO_TEXT",
-          "type" : "aws"
+          "contentHandling" : "CONVERT_TO_TEXT"
         }
       },
       "options" : {
@@ -192,6 +195,7 @@
           }
         },
         "x-amazon-apigateway-integration" : {
+          "type" : "mock",
           "responses" : {
             "default" : {
               "statusCode" : "200",
@@ -205,8 +209,7 @@
           "requestTemplates" : {
             "application/json" : "{\"statusCode\": 200}"
           },
-          "passthroughBehavior" : "when_no_match",
-          "type" : "mock"
+          "passthroughBehavior" : "when_no_match"
         }
       }
     }
