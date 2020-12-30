@@ -39,9 +39,7 @@ const getAll = async(event) => {
       };
     });
   
-    return {
-      data: items
-    }
+    return items;
   }
   catch (err) { 
     console.log('caught error', err);
@@ -80,12 +78,12 @@ const getSingle = async(event) => {
   
     const result = await promise;
     //return result;
-    return {
+    return [{
       //"userid": result.Item.Userid.S, 
       "height": +result.Item.Height.N, 
       "income": +result.Item.Income.N, 
       "age": +result.Item.Age.N 
-    };
+    }];
   }
   catch (err) { 
     console.log('caught error', err);
