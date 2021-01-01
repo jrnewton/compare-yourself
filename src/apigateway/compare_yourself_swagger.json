@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "version" : "2020-12-30T19:21:51Z",
+    "version" : "2021-01-01T20:19:17Z",
     "title" : "compare-yourself"
   },
   "host" : "8dqz0v87p3.execute-api.us-east-2.amazonaws.com",
@@ -34,10 +34,9 @@
           }
         },
         "security" : [ {
-          "compare-yourself-custom-authorizer" : [ ]
+          "compare-yourself-cognito-authorizer" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
-          "type" : "aws",
           "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-store-data/invocations",
           "responses" : {
             "default" : {
@@ -51,11 +50,12 @@
             }
           },
           "requestTemplates" : {
-            "application/json" : "#set($inputRoot = $input.path('$'))\n{\n  ## all properties must be strings for dynamo \n  ## not sure I like doing the conversion here and \n  ## would probably do it in JS code because it's specific to \n  ## lambda/dynamo. \n  \"userid\": \"$context.authorizer.principalId\",\n  \"age\" : \"$inputRoot.age\",\n  \"height\": \"$inputRoot.height\",\n  \"income\": \"$inputRoot.income\"\n}"
+            "application/json" : "#set($inputRoot = $input.path('$'))\n{\n  ## all properties must be strings for dynamo \n  ## not sure I like doing the conversion here and \n  ## would probably do it in JS code because it's specific to \n  ## lambda/dynamo. \n  \n  ## this is for authorizer backed by lambda function\n  ##\"userid\": \"$context.authorizer.principalId\",\n  ## this is for authorizer backed by cognito user pool\n  \"userid\": \"$context.authorizer.claims.sub\",\n  \"age\" : \"$inputRoot.age\",\n  \"height\": \"$inputRoot.height\",\n  \"income\": \"$inputRoot.income\"\n}"
           },
           "passthroughBehavior" : "when_no_templates",
           "httpMethod" : "POST",
-          "contentHandling" : "CONVERT_TO_TEXT"
+          "contentHandling" : "CONVERT_TO_TEXT",
+          "type" : "aws"
         }
       },
       "delete" : {
@@ -73,8 +73,10 @@
             }
           }
         },
+        "security" : [ {
+          "compare-yourself-cognito-authorizer" : [ ]
+        } ],
         "x-amazon-apigateway-integration" : {
-          "type" : "aws",
           "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-delete-data/invocations",
           "responses" : {
             "default" : {
@@ -86,7 +88,8 @@
           },
           "passthroughBehavior" : "when_no_match",
           "httpMethod" : "POST",
-          "contentHandling" : "CONVERT_TO_TEXT"
+          "contentHandling" : "CONVERT_TO_TEXT",
+          "type" : "aws"
         }
       },
       "options" : {
@@ -112,7 +115,6 @@
           }
         },
         "x-amazon-apigateway-integration" : {
-          "type" : "mock",
           "responses" : {
             "default" : {
               "statusCode" : "200",
@@ -126,7 +128,8 @@
           "requestTemplates" : {
             "application/json" : "{\"statusCode\": 200}"
           },
-          "passthroughBehavior" : "when_no_match"
+          "passthroughBehavior" : "when_no_match",
+          "type" : "mock"
         }
       }
     },
@@ -153,8 +156,10 @@
             }
           }
         },
+        "security" : [ {
+          "compare-yourself-cognito-authorizer" : [ ]
+        } ],
         "x-amazon-apigateway-integration" : {
-          "type" : "aws",
           "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-get-data/invocations",
           "responses" : {
             "default" : {
@@ -172,7 +177,8 @@
           },
           "passthroughBehavior" : "when_no_templates",
           "httpMethod" : "POST",
-          "contentHandling" : "CONVERT_TO_TEXT"
+          "contentHandling" : "CONVERT_TO_TEXT",
+          "type" : "aws"
         }
       },
       "options" : {
@@ -198,7 +204,6 @@
           }
         },
         "x-amazon-apigateway-integration" : {
-          "type" : "mock",
           "responses" : {
             "default" : {
               "statusCode" : "200",
@@ -212,21 +217,21 @@
           "requestTemplates" : {
             "application/json" : "{\"statusCode\": 200}"
           },
-          "passthroughBehavior" : "when_no_match"
+          "passthroughBehavior" : "when_no_match",
+          "type" : "mock"
         }
       }
     }
   },
   "securityDefinitions" : {
-    "compare-yourself-custom-authorizer" : {
+    "compare-yourself-cognito-authorizer" : {
       "type" : "apiKey",
       "name" : "Authorization",
       "in" : "header",
-      "x-amazon-apigateway-authtype" : "custom",
+      "x-amazon-apigateway-authtype" : "cognito_user_pools",
       "x-amazon-apigateway-authorizer" : {
-        "type" : "token",
-        "authorizerUri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-custom-authorizer/invocations",
-        "authorizerResultTtlInSeconds" : 300
+        "providerARNs" : [ "arn:aws:cognito-idp:us-east-2:336249122316:userpool/us-east-2_01b2WwYNg" ],
+        "type" : "cognito_user_pools"
       }
     }
   },
