@@ -8,7 +8,7 @@ const dynamodb = new AWS.DynamoDB({
 });
 
 exports.handler = async(event, context) => {
-  
+  console.log('store-data recieved this event', event);
 //NOTE: pass all _values_ as strings
   const params = {
     Item: {
