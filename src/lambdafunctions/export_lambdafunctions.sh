@@ -1,6 +1,7 @@
 #!/bin/bash
 
-aws lambda list-functions > manifest.json
+# we already get this information in each lambda json dump below...
+# aws lambda list-functions > manifest.json
 
 # --query to grab only FunctionName from returned json
 # sed to remove first and last lines
