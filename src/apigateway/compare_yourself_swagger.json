@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "version" : "2021-01-02T02:58:23Z",
+    "version" : "2021-01-02T03:15:00Z",
     "title" : "compare-yourself"
   },
   "host" : "8dqz0v87p3.execute-api.us-east-2.amazonaws.com",
@@ -59,6 +59,7 @@
         }
       },
       "delete" : {
+        "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "accessToken",
@@ -93,7 +94,10 @@
               }
             }
           },
-          "passthroughBehavior" : "when_no_match",
+          "requestTemplates" : {
+            "application/json" : "{\n  ##accessToken is the query param defined in method request\n  \"accessToken\": \"$input.params('accessToken')\"\n}"
+          },
+          "passthroughBehavior" : "when_no_templates",
           "httpMethod" : "POST",
           "contentHandling" : "CONVERT_TO_TEXT"
         }
