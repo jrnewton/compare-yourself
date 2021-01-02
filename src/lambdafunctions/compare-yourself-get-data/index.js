@@ -7,6 +7,8 @@ const dynamodb = new AWS.DynamoDB({
   region: 'us-east-2'
 });
 
+const cisp = new AWS.CognitoIdentityServiceProvider({ apiVersion: '2016-04-18' });
+
 const getAll = async(event) => {
   const params = {
     TableName: 'compare-yourself'
@@ -49,20 +51,46 @@ const getAll = async(event) => {
   }
 };
 
+const getUserId = (event) => {
+  return new Promise((resolve, reject) => {
+    console.log('getUserId for token', event.accessToken);
+    
+    const cispParams = {
+      "AccessToken": event.accessToken //via body mapping template
+    };
+    
+    cisp.getUser(cispParams, (err, result) => {
+      if (err) {
+        console.log('failed on cisp.getUser', err);
+        reject(err);
+      }
+      else {
+        console.log('success on cisp.getUser', result);
+        //userid is always index zero.  See docs.
+        const userId = result.UserAttributes[0].Value;
+        console.log('userid is', userId);
+        resolve(userId);
+      }
+    });  
+  });
+}
+
 const getSingle = async(event) => {
-  const params = {
-    TableName: 'compare-yourself',
-    Key: {
-      'Userid': {
-        S: 'user_0.8364740765549836'
+  try {
+    const userId = await getUserId(event);
+    
+    const params = {
+      TableName: 'compare-yourself',
+      Key: {
+        'Userid': {
+          S: '' + userId
+        }
       }
     }
-  }
-  
-  try {
+    
     console.log('creating promise');
     const promise = new Promise((resolve, reject) => {
-      console.log('get...');
+      console.log('get... with params', params);
       dynamodb.getItem(params, (err, data) => {
         console.log('get done');
         if (err) {

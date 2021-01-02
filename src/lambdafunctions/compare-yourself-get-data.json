@@ -5,17 +5,17 @@
     "Runtime": "nodejs12.x",
     "Role": "arn:aws:iam::336249122316:role/service-role/compare-yourself-get-data-role-3ac55evo",
     "Handler": "index.handler",
-    "CodeSize": 864,
+    "CodeSize": 1124,
     "Description": "",
     "Timeout": 3,
     "MemorySize": 128,
-    "LastModified": "2020-12-30T18:07:59.205+0000",
-    "CodeSha256": "qJrfX2Y20eQF/DTjZFS/bbvFPAhNQWSfin8dr5C4Ac0=",
+    "LastModified": "2021-01-01T21:15:10.877+0000",
+    "CodeSha256": "QQI0MnLUi4Wis07PWhDZU/JP4u1chnQBiuoCj2GMPv4=",
     "Version": "$LATEST",
     "TracingConfig": {
       "Mode": "PassThrough"
     },
-    "RevisionId": "f12d8ad0-ea51-4bbf-8ce5-f1f5daaaeea2",
+    "RevisionId": "41e5bc51-3f87-4076-959f-090149d39ed1",
     "State": "Active",
     "LastUpdateStatus": "Successful",
     "PackageType": "Zip"
