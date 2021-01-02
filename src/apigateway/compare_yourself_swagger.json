@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "version" : "2021-01-01T20:19:17Z",
+    "version" : "2021-01-02T02:58:23Z",
     "title" : "compare-yourself"
   },
   "host" : "8dqz0v87p3.execute-api.us-east-2.amazonaws.com",
@@ -37,6 +37,7 @@
           "compare-yourself-cognito-authorizer" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
+          "type" : "aws",
           "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-store-data/invocations",
           "responses" : {
             "default" : {
@@ -54,92 +55,14 @@
           },
           "passthroughBehavior" : "when_no_templates",
           "httpMethod" : "POST",
-          "contentHandling" : "CONVERT_TO_TEXT",
-          "type" : "aws"
+          "contentHandling" : "CONVERT_TO_TEXT"
         }
       },
       "delete" : {
         "produces" : [ "application/json" ],
-        "responses" : {
-          "200" : {
-            "description" : "200 response",
-            "schema" : {
-              "$ref" : "#/definitions/Empty"
-            },
-            "headers" : {
-              "Access-Control-Allow-Origin" : {
-                "type" : "string"
-              }
-            }
-          }
-        },
-        "security" : [ {
-          "compare-yourself-cognito-authorizer" : [ ]
-        } ],
-        "x-amazon-apigateway-integration" : {
-          "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-delete-data/invocations",
-          "responses" : {
-            "default" : {
-              "statusCode" : "200",
-              "responseParameters" : {
-                "method.response.header.Access-Control-Allow-Origin" : "'*'"
-              }
-            }
-          },
-          "passthroughBehavior" : "when_no_match",
-          "httpMethod" : "POST",
-          "contentHandling" : "CONVERT_TO_TEXT",
-          "type" : "aws"
-        }
-      },
-      "options" : {
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
-        "responses" : {
-          "200" : {
-            "description" : "200 response",
-            "schema" : {
-              "$ref" : "#/definitions/Empty"
-            },
-            "headers" : {
-              "Access-Control-Allow-Origin" : {
-                "type" : "string"
-              },
-              "Access-Control-Allow-Methods" : {
-                "type" : "string"
-              },
-              "Access-Control-Allow-Headers" : {
-                "type" : "string"
-              }
-            }
-          }
-        },
-        "x-amazon-apigateway-integration" : {
-          "responses" : {
-            "default" : {
-              "statusCode" : "200",
-              "responseParameters" : {
-                "method.response.header.Access-Control-Allow-Methods" : "'DELETE,OPTIONS,POST'",
-                "method.response.header.Access-Control-Allow-Headers" : "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-                "method.response.header.Access-Control-Allow-Origin" : "'*'"
-              }
-            }
-          },
-          "requestTemplates" : {
-            "application/json" : "{\"statusCode\": 200}"
-          },
-          "passthroughBehavior" : "when_no_match",
-          "type" : "mock"
-        }
-      }
-    },
-    "/compare-yourself/{type}" : {
-      "get" : {
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
         "parameters" : [ {
-          "name" : "type",
-          "in" : "path",
+          "name" : "accessToken",
+          "in" : "query",
           "required" : true,
           "type" : "string"
         } ],
@@ -160,25 +83,19 @@
           "compare-yourself-cognito-authorizer" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
-          "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-get-data/invocations",
+          "type" : "aws",
+          "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-delete-data/invocations",
           "responses" : {
             "default" : {
               "statusCode" : "200",
               "responseParameters" : {
                 "method.response.header.Access-Control-Allow-Origin" : "'*'"
-              },
-              "responseTemplates" : {
-                "application/json" : "#set($inputRoot = $input.path('$'))\n[\n#foreach($elem in $inputRoot)\n {\n  \"age\" : $elem.age,\n  \"height\" : $elem.height,\n  \"income\" : $elem.income\n} \n#if($foreach.hasNext),#end\n#end\n]"
               }
             }
           },
-          "requestTemplates" : {
-            "application/json" : "{\n   ## quote the value to send as a string \n  \"type\": \"$input.params('type')\"\n}"
-          },
-          "passthroughBehavior" : "when_no_templates",
+          "passthroughBehavior" : "when_no_match",
           "httpMethod" : "POST",
-          "contentHandling" : "CONVERT_TO_TEXT",
-          "type" : "aws"
+          "contentHandling" : "CONVERT_TO_TEXT"
         }
       },
       "options" : {
@@ -204,6 +121,101 @@
           }
         },
         "x-amazon-apigateway-integration" : {
+          "type" : "mock",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200",
+              "responseParameters" : {
+                "method.response.header.Access-Control-Allow-Methods" : "'DELETE,OPTIONS,POST'",
+                "method.response.header.Access-Control-Allow-Headers" : "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin" : "'*'"
+              }
+            }
+          },
+          "requestTemplates" : {
+            "application/json" : "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior" : "when_no_match"
+        }
+      }
+    },
+    "/compare-yourself/{type}" : {
+      "get" : {
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "type",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "accessToken",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            },
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "type" : "string"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "compare-yourself-cognito-authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "type" : "aws",
+          "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:336249122316:function:compare-yourself-get-data/invocations",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200",
+              "responseParameters" : {
+                "method.response.header.Access-Control-Allow-Origin" : "'*'"
+              },
+              "responseTemplates" : {
+                "application/json" : "#set($inputRoot = $input.path('$'))\n[\n#foreach($elem in $inputRoot)\n {\n  \"age\" : $elem.age,\n  \"height\" : $elem.height,\n  \"income\" : $elem.income\n} \n#if($foreach.hasNext),#end\n#end\n]"
+              }
+            }
+          },
+          "requestTemplates" : {
+            "application/json" : "{\n   ## quote the value to send as a string \n  \"type\": \"$input.params('type')\",\n  ##accessToken is the query param defined in method request\n  \"accessToken\": \"$input.params('accessToken')\"\n}"
+          },
+          "passthroughBehavior" : "when_no_templates",
+          "httpMethod" : "POST",
+          "contentHandling" : "CONVERT_TO_TEXT"
+        }
+      },
+      "options" : {
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            },
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "type" : "string"
+              },
+              "Access-Control-Allow-Methods" : {
+                "type" : "string"
+              },
+              "Access-Control-Allow-Headers" : {
+                "type" : "string"
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "type" : "mock",
           "responses" : {
             "default" : {
               "statusCode" : "200",
@@ -217,8 +229,7 @@
           "requestTemplates" : {
             "application/json" : "{\"statusCode\": 200}"
           },
-          "passthroughBehavior" : "when_no_match",
-          "type" : "mock"
+          "passthroughBehavior" : "when_no_match"
         }
       }
     }
@@ -230,8 +241,8 @@
       "in" : "header",
       "x-amazon-apigateway-authtype" : "cognito_user_pools",
       "x-amazon-apigateway-authorizer" : {
-        "providerARNs" : [ "arn:aws:cognito-idp:us-east-2:336249122316:userpool/us-east-2_01b2WwYNg" ],
-        "type" : "cognito_user_pools"
+        "type" : "cognito_user_pools",
+        "providerARNs" : [ "arn:aws:cognito-idp:us-east-2:336249122316:userpool/us-east-2_01b2WwYNg" ]
       }
     }
   },
